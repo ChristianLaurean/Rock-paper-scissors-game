@@ -2,35 +2,39 @@ import random
 import os
 
 
-def winner(win_1, win_2):
+def winner(win_1, win_2,):
      if win_1 == 3:
-          print("Gano usr1")
+          print("                               🏆♕【𝑼𝑺𝑬𝑹 𝑾𝑰𝑵】♕🏆")
+          print("                                   2 player 【𝒀𝑶𝑼 𝑳𝑶𝑺𝑻】")
 
      if win_2 == 3:
-          print("Gano usr2")
+          print("                                   1 player 【𝒀𝑶𝑼 𝑳𝑶𝑺𝑻】")
+          print("                               🏆♕【𝑼𝑺𝑬𝑹 𝑾𝑰𝑵】♕🏆")
+
+     
 
 
 
 
-def usuarios():
-    usuarios = input("piedra, papel o tijera: ").lower()
 
-    return usuarios
+
+
+def usr():
+    option_usr = input("𝑹𝑶𝑪𝑲 𝑷𝑨𝑷𝑬𝑹 𝑺𝑪𝑰𝑺𝑺𝑶𝑹𝑺...: ").lower()
+    return option_usr
 
 
 
 
 def opciones():
-    opciones = ("piedra", "papel", "tijera")
-    
+    opciones = ("rock", "paper", "scissors")
     return opciones
 
 
 
 
-def escoger_pc(op):
+def choose_option(op):
      escoge_cpu = random.choice(op)
-     
      return escoge_cpu
 
 
@@ -39,31 +43,32 @@ def escoger_pc(op):
 def logic(opcion_usr, opcion_cpu, win_1, win_2):
 
      if opcion_usr == opcion_cpu:
-          print("Empate")
+          print("      ✦〔﹝𝑻𝑰𝑬﹞〕✦\n")
 
-     elif opcion_usr == "piedra":
-          if opcion_cpu == "tijera":
-               print("Piedra gana a tijera")
-               win_1 += 1
-          else:
-               print("Papel gana a piedra")
-               win_2 += 1
+     elif opcion_usr == "rock":
+        if opcion_cpu == "scissors":
+            win_1 += 1
+            print("  ✦〔﹝𝑹𝑶𝑪𝑲 𝑩𝑬𝑨𝑻𝑺 𝑺𝑪𝑰𝑺𝑺𝑶𝑹𝑺﹞〕✦\n")
+        else:
+            print("  ✦〔﹝𝑷𝑨𝑷𝑬𝑹 𝑩𝑬𝑨𝑻𝑺 𝑹𝑶𝑪𝑲﹞〕✦\n")
+            win_2 += 1
 
-     elif opcion_usr == "papel":
-          if opcion_cpu == "piedra":
-               print("Papel gana a Piedra")
-               win_1 += 1
-          else:
-               print("Tijera gana a Papel")
-               win_2 += 1
-     
-     elif opcion_usr == "tijera":
-          if opcion_cpu == "papel":
-               print("Tijera gana a Papel")
-               win_1 += 1
-          else:
-               print("Piedra gana a Tijera")
-               win_2 += 2
+
+     elif opcion_usr == "paper":
+        if opcion_cpu == "rock":
+            win_1 += 1
+            print("  ✦〔﹝𝑷𝑨𝑷𝑬𝑹 𝑩𝑬𝑨𝑻𝑺 𝑹𝑶𝑪𝑲﹞〕✦\n")
+        else:
+            print("  ✦〔﹝𝑺𝑪𝑰𝑺𝑺𝑶𝑹𝑺 𝑾𝑰𝑵𝑺 𝑷𝑨𝑷𝑬𝑹﹞〕✦\n")
+            win_2 += 1
+          
+     elif opcion_usr == "scissors":
+        if opcion_cpu == "paper":
+            win_1 += 1
+            print("  ✦〔﹝𝑺𝑪𝑰𝑺𝑺𝑶𝑹𝑺 𝑾𝑰𝑵𝑺 𝑷𝑨𝑷𝑬𝑹﹞〕✦\n")
+        else:
+            print("  ✦〔﹝𝑹𝑶𝑪𝑲 𝑩𝑬𝑨𝑻𝑺 𝑺𝑪𝑰𝑺𝑺𝑶𝑹𝑺﹞〕✦\n")
+            win_2 += 1
 
      return win_1, win_2
      
@@ -99,21 +104,22 @@ menu = menu()
 
 def game(men):
     if men == 1:
+       
        win_1 = 0 
        win_2 = 0 
-       while True:
-        print(win_1, win_2)
+
+       while win_1 < 4 and win_2 < 4:
+
+        print(f"  𝑼𝑺𝑬𝑹: {win_1} ===== 𝑪𝑷𝑼: {win_2}")
         winner(win_1, win_2)
         opciones_pc = opciones()
-        usuario_1 = usuarios()
+        usuario_1 = usr()
         
         if not usuario_1  in opciones_pc:
              print("Escoge una opcion correcta")
              continue 
 
-        
-
-        cpu_option = escoger_pc(opciones_pc)
+        cpu_option = choose_option(opciones_pc)
 
         print(f"   （﹙𝑼𝑺𝑬𝑹﹚）:   {usuario_1}")
         print(f"    （﹙𝑪𝑷𝑼﹚）:   {cpu_option}\n")
@@ -130,18 +136,18 @@ def game(men):
        win_2 = 0 
 
        while True:
-        print(win_1, win_2)
+        print(f"  𝑼𝑺𝑬𝑹: {win_1} ===== 𝑪𝑷𝑼: {win_2}")
         winner(win_1, win_2)
 
         opciones_pl = opciones()
 
-        usuario_1 = usuarios() 
+        usuario_1 = usr() 
         
         if not usuario_1  in opciones_pl:
              print("Escoge una opcion correcta")
              continue
 
-        usuario_2 = usuarios()
+        usuario_2 = usr()
         if not usuario_2  in opciones_pl:
              print("Escoge una opcion correcta")
              continue
@@ -156,7 +162,6 @@ def game(men):
         
         
     else:
-            pass
-            
-                
+        print("ＴＨＡＴ ＯＰＴＩＯＮ ＩＳ ＮＯＴ ＦＯＵＮＤ ＩＮ ＴＨＥ ＤＡＴＡＢＡＳＥ.\n")
+                          
 game(menu)      
